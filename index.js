@@ -1,4 +1,5 @@
 const Koa = require('koa')
+const dotenv = require('dotenv').config()
 const path = require('path')
 const Router = require('koa-router')
 const rp = require('request-promise')
