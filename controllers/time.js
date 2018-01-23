@@ -1,3 +1,5 @@
+'use strict'
+
 const timeHelper = require('../time')
 
 function time(ctx) {

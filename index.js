@@ -8,22 +8,13 @@ const rp = require('request-promise')
 const render = require('koa-ejs')
 const serve = require('koa-static')
 const controller = require('./controllers')
-const mysql = require('mysql2/promise')
-
-function connection() {
-  return mysql.createConnection({
-    host: process.env.DB_HOST, 
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME
-  })
-}
+const db = require('./db')
 
 async function startServer() {
   const app = new Koa()
   const router = new Router()
-  
-  app.context.connection = await connection()
+
+  app.context.connection = await db.connection()
   
   render(app, {
     root: path.join(__dirname, 'views'),
@@ -40,7 +31,7 @@ async function startServer() {
   router.get('/images', controller.images)
   router.get('/family', controller.family.getFamily)
   router.get('/family/:koalaName', controller.family.getFamilyMember)
-  
+
   app 
     .use(serve('images'))
     .use(router.routes())

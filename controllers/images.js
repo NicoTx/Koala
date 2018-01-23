@@ -1,3 +1,4 @@
+'use strict'
 
 async function images(ctx) {
     const imgs = [{ show: './henry.jpeg' }, 

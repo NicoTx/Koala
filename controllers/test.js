@@ -1,3 +1,5 @@
+'use strict'
+
 async function getKoala(ctx) {
     const mysql = require('mysql2/promise')
     

@@ -1,3 +1,5 @@
+'use strict'
+
 async function start(ctx) {
     await ctx.render('hello')
 }
